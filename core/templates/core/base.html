@@ -50,6 +50,14 @@
 
     <!-- Showcase -->
     <div class="game-table mt-5">
+      {% if messages %}
+        {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+            {{message}}
+          </div>
+        {% endfor %}
+      {% endif %}
+      
       {% block content %}{% endblock content %}
     </div>
 

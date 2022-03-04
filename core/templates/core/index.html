@@ -12,6 +12,7 @@
       <th scope="col">ACV</th>
       <th scope="col">Creators</th>
       <th scope="col">Streams</th>
+      <th scope="col">Action</th>
     </tr>
   </thead>
 
@@ -25,6 +26,12 @@
         <td>{{game.acv_num}}</td>
         <td>{{game.creators}}</td>
         <td>{{game.streams_num}}</td>
+
+        <td>
+          <a class="btn btn-primary btn-sm mt-1 mb-1" href="{% url 'game-update' game.id %}"><i class="fas fa-pen"></i> Update</a>
+          <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'game-delete' game.id %}"><i class="fas fa-archive"></i> Archive</a>
+        </td>
+        
       </tr>
     </tbody>
   {% endfor %}
