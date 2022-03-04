@@ -1,5 +1,6 @@
 from django.shortcuts import render
-from django.views.generic import ListView, CreateView
+from django.contrib.messages.views import SuccessMessageMixin
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView
 from .models import Game
 
 
@@ -10,8 +11,7 @@ class GameListView(ListView):
     model = Game
     template_name = 'core/index.html'
     context_object_name = 'games'
-    paginate_by = 2
-
+    paginate_by = 5
 
 class GameCreateView(CreateView):
     """
@@ -19,3 +19,14 @@ class GameCreateView(CreateView):
     """
     model = Game
     fields = ['name', 'viewer_hour', 'hours_streamed', 'acv_num', 'creators', 'streams_num']
+
+
+class GameUpdateView(SuccessMessageMixin, UpdateView):
+    success_message ='Your Game has been Updated!'
+    model = Game
+    fields = ['name', 'viewer_hour', 'hours_streamed', 'acv_num', 'creators', 'streams_num']
+
+class GameDeleteView(SuccessMessageMixin, DeleteView):
+    success_message ='Your Game has been Deleted!'
+    model = Game
+    success_url = '/'
