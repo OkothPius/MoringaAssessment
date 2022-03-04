@@ -11,7 +11,7 @@ class GameListView(ListView):
     model = Game
     template_name = 'core/index.html'
     context_object_name = 'games'
-    paginate_by = 5
+    paginate_by = 10
 
 class GameCreateView(CreateView):
     """
