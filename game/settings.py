@@ -1,14 +1,20 @@
+import os
+import environ
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+ # reading .env file
+env = environ.Env()
+environ.Env.read_env()
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dr)lkx8vur@#&8#(74s3ikgbscto&k4if&8hl=9@y^fixh7#b4'
+SECRET_KEY = '<secret>'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -65,11 +71,14 @@ WSGI_APPLICATION = 'game.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'moringa',
+        'USER': 'moringa_user',
+        'PASSWORD': '$pyglass',
+        'HOST': '127.0.0.1',
+        'PORT': '5432',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
